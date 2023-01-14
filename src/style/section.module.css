@@ -1,0 +1,105 @@
+.section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 5rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.section h2 {
+  font-size: 3.4rem;
+  font-weight: 600;
+}
+
+.section.model-s {
+  background-image: url(../images/model-s.jpg);
+}
+.section.model-3 {
+  background-image: url(../images/model-3.jpg);
+}
+.section.model-y {
+  background-image: url(../images/model-y.jpg);
+}
+.section.model-x {
+  background-image: url(../images/model-x.jpg);
+}
+.section.solar-panel {
+  background-image: url(../images/solar-panel.jpg);
+}
+.section.accessories {
+  background-image: url(../images/accessories.jpg);
+}
+
+.section button {
+  outline: none;
+  border: none;
+}
+
+.section .main-btns {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.section .btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.section .btn1 {
+  padding: 0.5rem 2.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+  background-color: rgba(57, 60, 65, 0.785);
+  color: white;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+
+.section .btn2 {
+  padding: 0.5rem 2.8rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.8;
+  border-radius: 0.2rem;
+  color: rgba(57, 60, 65, 0.785);
+  background-color: white;
+  cursor: pointer;
+}
+
+.section .arrow {
+  background-color: transparent;
+  width: 3rem;
+  height: 3rem;
+  margin-top: 3rem;
+}
+
+.icon {
+  animation: next_page 3s infinite ease-in-out;
+  font-size: 1.5rem;
+  fill: black;
+  cursor: pointer;
+}
+
+@keyframes next_page {
+  0%,
+  10%,
+  30%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0.5rem);
+  }
+  40% {
+    transform: translateY(0.3rem);
+  }
+}

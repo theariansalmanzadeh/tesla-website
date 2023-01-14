@@ -1,0 +1,88 @@
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 150;
+  opacity: 0;
+}
+
+.modal {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 20vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transform: translateX(100%);
+  right: 0;
+  z-index: 170;
+}
+
+.modal.FadeIn {
+  animation: modalFadeIn 1s 0.5s forwards;
+}
+.modal.FadeOut {
+  transform: translateX(0);
+  animation: modalFadeOut 1s 0.5s forwards;
+}
+.backdrop.FadeIn {
+  animation: backdropFadeIn 1s 0.5s forwards;
+}
+.backdrop.FadeOut {
+  opacity: 1;
+  visibility: visible;
+  animation: backdropFadeOut 1s 0.5s forwards;
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes backdropFadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .modal {
+    width: 100%;
+  }
+}

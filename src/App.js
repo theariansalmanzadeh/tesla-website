@@ -1,57 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+
+import Layout from "./components/layout/Layout";
+// import HomePage from "./Pages/HomePage";
+// import ModelPage from "./Pages/ModelPage";
+// import NotFound from "./Pages/NotFound";
+import HistoryListenrer from "./components/layout/HistoryListenrer";
+
+const HomePage = lazy(() => import("./Pages/HomePage"));
+const ModelPage = lazy(() => import("./Pages/ModelPage"));
+const NotFound = lazy(() => import("./Pages/NotFound"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Layout>
+      <HistoryListenrer>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/home" exact>
+            <HomePage />
+          </Route>
+          <Route path="/Model/:modelId">
+            <ModelPage />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </HistoryListenrer>
+    </Layout>
   );
 }
 
