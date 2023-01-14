@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useSelector, useDispatch } from "react-redux";
-
+import loading from "../../images/loading.png";
 import img1 from "../../images/connected.jpg";
 import img2 from "../../images/audio.jpg";
 import img3 from "../../images/game.jpg";
@@ -8,6 +9,8 @@ import img3 from "../../images/game.jpg";
 import { actions } from "../../app/store";
 
 import style from "../../style/models.module.css";
+
+const imgLoader = <div className={style.imgLoading}>loading</div>;
 
 function ModelGlossary() {
   const diverCallBack = function (entries) {
@@ -75,7 +78,12 @@ function ModelGlossary() {
     <section className={style.ModelGlossary}>
       <div className={glossarySection1} ref={glossarySection1Ref}>
         <div className={style.glossaryImg}>
-          <img src={img1} alt="" />
+          <LazyLoadImage
+            effect="blur"
+            PlaceholderSrc={loading}
+            src={img1}
+            alt=""
+          />
         </div>
         <div className={style.glossaryText}>
           <h5>Stay Connected</h5>
@@ -95,7 +103,12 @@ function ModelGlossary() {
           </p>
         </div>
         <div className={style.glossaryImg}>
-          <img src={img2} alt="" />
+          <LazyLoadImage
+            effect="blur"
+            PlaceholderSrc={loading}
+            src={img2}
+            alt=""
+          />
         </div>
       </div>
 
@@ -104,7 +117,12 @@ function ModelGlossary() {
         ref={glossarySection3Ref}
       >
         <div className={style.glossaryImg}>
-          <img src={img3} alt="" />
+          <LazyLoadImage
+            effect="blur"
+            PlaceholderSrc={loading}
+            src={img3}
+            alt=""
+          />
         </div>
         <div className={style.glossaryText}>
           <h5>Stay Connected</h5>

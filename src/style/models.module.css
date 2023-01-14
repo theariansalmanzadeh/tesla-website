@@ -56,6 +56,12 @@
   /* gap: 0.5rem; */
 }
 
+.imgLoading {
+  height: 100%;
+  width: 100%;
+  background-color: #222;
+}
+
 .model-landingPage .landingDetails div,
 button {
   opacity: 0;

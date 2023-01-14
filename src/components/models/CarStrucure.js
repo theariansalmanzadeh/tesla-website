@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState, useRef } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import carImg from "../../images/car-structure.jfif";
 import styles from "../../style/structure.module.css";
 
@@ -54,7 +55,7 @@ function CarStrucure({ infos }) {
         </div>
       </div>
       <div className={styles.carImg} ref={imgRef}>
-        <img src={carImg} alt="car structure" />
+        <LazyLoadImage effect="blur" src={carImg} alt="car structure" />
         <div className={styles.pointers}>
           <div id="dataLines" className={LinesClass}></div>
         </div>
