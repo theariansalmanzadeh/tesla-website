@@ -2,10 +2,15 @@ import React, { useEffect, useMemo, useState, useRef } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import carImg from "../../images/car-structure.jfif";
 import styles from "../../style/structure.module.css";
+import loading from "../../images/loading.png";
+
+let imgIsloaded = false;
 
 function CarStrucure({ infos }) {
   const imgRef = useRef();
+  const imgRefimg = useRef();
   const [intersecting, setIntersecting] = useState(false);
+  const [IsLoaded, setIsLoaded] = useState(false);
 
   const observerOptions = useMemo(() => {
     return { root: null, rootMargin: "0px", threshold: 0.8 };
@@ -13,10 +18,10 @@ function CarStrucure({ infos }) {
 
   const intersectCallback = (entries) => {
     const [entry] = entries;
+
     if (!entry.isIntersecting) return;
     const dataLines = document.querySelectorAll("#dataLines");
     dataLines.forEach((elem) => {
-      console.log(elem.classList);
       setIntersecting(true);
     });
   };
@@ -29,12 +34,13 @@ function CarStrucure({ infos }) {
     : `${styles.linesReversed}`;
 
   useEffect(() => {
+    if (!IsLoaded) return;
     const observer = new IntersectionObserver(
       intersectCallback,
       observerOptions
     );
     observer.observe(imgRef.current);
-  }, [observerOptions]);
+  }, [observerOptions, IsLoaded]);
 
   return (
     <div className={styles.sturcture}>
@@ -55,7 +61,18 @@ function CarStrucure({ infos }) {
         </div>
       </div>
       <div className={styles.carImg} ref={imgRef}>
-        <LazyLoadImage effect="blur" src={carImg} alt="car structure" />
+        <img
+          ref={imgRefimg}
+          onLoad={(e) => {
+            console.log(e);
+            setIsLoaded(true);
+          }}
+          onError={() => {
+            console.log("22");
+          }}
+          src={carImg}
+          alt="car structure"
+        />
         <div className={styles.pointers}>
           <div id="dataLines" className={LinesClass}></div>
         </div>

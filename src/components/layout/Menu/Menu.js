@@ -22,19 +22,49 @@ function Menu(props) {
         </button>
         <ul>
           {/* <div className={styles.active}> */}
-          <Link className={styles.active} to="/model/model-s">
+          <Link
+            onClick={() => {
+              dispatch(actions.hideMenu());
+            }}
+            className={styles.active}
+            to="/model/model-s"
+          >
             Model S
           </Link>
-          <Link className={styles.active} to="/model/model-y">
+          <Link
+            onClick={() => {
+              dispatch(actions.hideMenu());
+            }}
+            className={styles.active}
+            to="/model/model-y"
+          >
             Model Y
           </Link>
-          <Link className={styles.active} to="/model/model-x">
+          <Link
+            onClick={() => {
+              dispatch(actions.hideMenu());
+            }}
+            className={styles.active}
+            to="/model/model-x"
+          >
             Model X
           </Link>
-          <Link className={styles.active} to="/model/model-3">
+          <Link
+            onClick={() => {
+              dispatch(actions.hideMenu());
+            }}
+            className={styles.active}
+            to="/model/model-3"
+          >
             Model 3
           </Link>
-          <Link className={styles.active} to="/solar-roof">
+          <Link
+            onClick={() => {
+              dispatch(actions.hideMenu());
+            }}
+            className={styles.active}
+            to="/solar-roof"
+          >
             Solar Roof
           </Link>
           {/* </div> */}
